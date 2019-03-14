@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name             = 'APBiometricAuthentication'
   s.version          = '1.3'
-  s.summary          = 'This class provides easy to use functions to authenticate user biometrics using LocalAuthentication framework provided by Apple.'
+  s.summary          = 'Issue of accessing functions has been resolved'
  
   s.description      = <<-DESC
-This class provides easy to use functions to authenticate user biometrics (TouchID or FaceID) using LocalAuthentication framework provided by Apple.
+Issue of accessing functions has been resolved.
                        DESC
  
   s.homepage         = 'https://github.com/AkashPatel09/APBiometricAuthentication'
