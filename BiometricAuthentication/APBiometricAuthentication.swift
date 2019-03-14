@@ -10,7 +10,7 @@ import LocalAuthentication
 
 //NOTE: Please add NSFaceIDUsageDescription key in your project's info.plist file in case to  authenticate user with their faceID
 
-class APBiometricAuthentication {
+public final class APBiometricAuthentication {
     
     static let shared = APBiometricAuthentication()
     
