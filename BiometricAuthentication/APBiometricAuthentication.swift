@@ -10,9 +10,17 @@ import LocalAuthentication
 
 //NOTE: Please add NSFaceIDUsageDescription key in your project's info.plist file in case to  authenticate user with their faceID
 
-public final class APBiometricAuthentication {
+open class APBiometricAuthentication {
     
-    static let shared = APBiometricAuthentication()
+    open class func shared() -> APBiometricAuthentication {
+        struct Static {
+            //Singleton instance. Initializing keyboard manger.
+            static let APAuthentication = APBiometricAuthentication()
+        }
+        
+        /** @return Returns the default singleton instance. */
+        return Static.APAuthentication
+    }
     
     //Biometrics authentication reason: You can define your reason for using biometrics authetication of user here. Change this variable value using shared() instance of this class and then begin biometrics authentication
     var authenticationReason = "Biometric Authentication"
@@ -22,7 +30,7 @@ public final class APBiometricAuthentication {
      First variable is Boolean which indicates whether a biometric authentication finished sucessfully or not.
      If not then the second variable of completion block will return the respective error message otherwise this second variable will be having nil value.
      */
-    func beginBiometricAuthentication(_ completion : @escaping (_ isSuccess : Bool, _ errorMessage: String?)->Void) {
+    open func beginBiometricAuthentication(_ completion : @escaping (_ isSuccess : Bool, _ errorMessage: String?)->Void) {
         
         guard #available(iOS 8.0, *) else {
             completion(false, "Not supported")
@@ -54,7 +62,7 @@ public final class APBiometricAuthentication {
      This function is useful in case of one need to handle specific LAError and need to provide respective action in the application.
      Please note that, if error occurred duting biometrics authentication fails to convert into LAError then second variable of completion block will be having nil value. Also first variable will have FALSE value to indicate failure of biometric authentication.
      */
-    func beginBiometricAuthenticationWithLAError(completion: @escaping (_ isSuccess : Bool,_ authenticationError : LAError?)->Void) {
+    open func beginBiometricAuthenticationWithLAError(completion: @escaping (_ isSuccess : Bool,_ authenticationError : LAError?)->Void) {
         
         guard #available(iOS 8.0, *) else {
             completion(false, nil)
