@@ -21,5 +21,5 @@ APBiometricAuthentication.shared.beginBiometricAuthentication { (authenticationS
 ```
 
 ## License
-MIT
+Distributed under the MIT License.
 
