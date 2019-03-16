@@ -25,6 +25,14 @@ open class APBiometricAuthentication {
     //Biometrics authentication reason: You can define your reason for using biometrics authetication of user here. Change this variable value using shared() instance of this class and then begin biometrics authentication
     var authenticationReason = "Biometric Authentication"
     
+    /* This function directly returns a completion handler with only boolean varibale which says that whether the biometric uthentication finished successfully or not.
+     */
+    open func beginBiometricAuthentication(_ completion : @escaping (_ isSuccess : Bool)->Void) {
+        self.beginBiometricAuthentication { (isSuccess, errorMessage) in
+            completion(isSuccess)
+        }
+    }
+    
     
     /* This function authenticate user's biometrics using LocalAuthentication framework provided by Apple. This returns a completion block of two variables.
      First variable is Boolean which indicates whether a biometric authentication finished sucessfully or not.
